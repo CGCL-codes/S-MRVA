@@ -1,0 +1,22 @@
+{
+  "plugin_file": "injection_sql.py",
+  "test_id": "B608",
+  "description": "Test for SQL injection",
+  "severity": "Medium",
+  "confidence": "Low",
+  "cwe": "CWE-89",
+  "function_name": "_check_string",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "sql_multiline_statements.py",
+      "issues_found": 26
+    },
+    {
+      "test_file": "sql_statements.py",
+      "issues_found": 23
+    }
+  ],
+  "total_matched_tests": 2
+}

@@ -1,0 +1,19 @@
+{
+  "plugin_file": "logging_config_insecure_listen.py",
+  "test_id": "B612",
+  "description": "Test for insecure use of logging.config.listen",
+  "severity": "Medium",
+  "confidence": "High",
+  "cwe": "CWE-94",
+  "function_name": "logging_config_insecure_listen",
+  "test_file": "logging_config_insecure_listen.py",
+  "has_test": true,
+  "test_file_copied_as": "test_logging_config_insecure_listen.py",
+  "matched_test_files": [
+    {
+      "test_file": "logging_config_insecure_listen.py",
+      "issues_found": 1
+    }
+  ],
+  "total_matched_tests": 1
+}

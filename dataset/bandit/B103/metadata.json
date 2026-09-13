@@ -1,0 +1,18 @@
+{
+  "plugin_file": "general_bad_file_permissions.py",
+  "test_id": "B103",
+  "description": "Test for setting permissive file permissions",
+  "severity": "Medium",
+  "confidence": "Medium",
+  "cwe": "CWE-732",
+  "function_name": "_stat_is_dangerous",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "os-chmod.py",
+      "issues_found": 11
+    }
+  ],
+  "total_matched_tests": 1
+}

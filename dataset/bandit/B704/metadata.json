@@ -1,0 +1,27 @@
+{
+  "plugin_file": "markupsafe_markup_xss.py",
+  "test_id": "B704",
+  "description": "Potential XSS on markupsafe.Markup use",
+  "severity": "Medium",
+  "confidence": "High",
+  "cwe": "CWE-79",
+  "function_name": "gen_config",
+  "test_file": "markupsafe_markup_xss.py",
+  "has_test": true,
+  "test_file_copied_as": "test_markupsafe_markup_xss.py",
+  "matched_test_files": [
+    {
+      "test_file": "markupsafe_markup_xss_allowed_calls.py",
+      "issues_found": 2
+    },
+    {
+      "test_file": "markupsafe_markup_xss_extend_markup_names.py",
+      "issues_found": 1
+    },
+    {
+      "test_file": "markupsafe_markup_xss.py",
+      "issues_found": 4
+    }
+  ],
+  "total_matched_tests": 3
+}

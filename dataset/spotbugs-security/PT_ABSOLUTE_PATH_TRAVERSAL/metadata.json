@@ -1,0 +1,23 @@
+{
+  "rule": {
+    "type": "PT_ABSOLUTE_PATH_TRAVERSAL",
+    "abbrev": "PT",
+    "category": "SECURITY",
+    "cweid": "36",
+    "detectors": [
+      {
+        "class": "edu.umd.cs.findbugs.detect.CrossSiteScripting",
+        "class_short": "CrossSiteScripting",
+        "implementation_file": "spotbugs/src/main/java/edu/umd/cs/findbugs/detect/CrossSiteScripting.java"
+      }
+    ],
+    "test_files": [
+      {
+        "test_file": "Ideas_2010_12_06.java",
+        "copied": true
+      }
+    ],
+    "test_files_copied": 1
+  },
+  "extraction_date": "2026-03-25T19:23:16.552194"
+}

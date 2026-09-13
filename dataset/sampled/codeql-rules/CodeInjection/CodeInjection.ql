@@ -1,0 +1,1 @@
+../../../../data/codeql/python/ql/src/Security/CWE-094/CodeInjection.ql

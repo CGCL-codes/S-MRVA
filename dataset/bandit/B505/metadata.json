@@ -1,0 +1,18 @@
+{
+  "plugin_file": "weak_cryptographic_key.py",
+  "test_id": "B505",
+  "description": "Test for weak cryptographic key use",
+  "severity": "High",
+  "confidence": "High",
+  "cwe": "CWE-326",
+  "function_name": "gen_config",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "weak_cryptographic_key_sizes.py",
+      "issues_found": 14
+    }
+  ],
+  "total_matched_tests": 1
+}

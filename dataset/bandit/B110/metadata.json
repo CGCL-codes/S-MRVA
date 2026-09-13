@@ -1,0 +1,19 @@
+{
+  "plugin_file": "try_except_pass.py",
+  "test_id": "B110",
+  "description": "Test for a pass in the except block",
+  "severity": "Low",
+  "confidence": "High",
+  "cwe": "CWE-703",
+  "function_name": "gen_config",
+  "test_file": "try_except_pass.py",
+  "has_test": true,
+  "test_file_copied_as": "test_try_except_pass.py",
+  "matched_test_files": [
+    {
+      "test_file": "try_except_pass.py",
+      "issues_found": 2
+    }
+  ],
+  "total_matched_tests": 1
+}

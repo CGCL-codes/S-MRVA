@@ -1,0 +1,1 @@
+../../../../data/codeql/python/ql/src/Security/CWE-020/IncompleteUrlSubstringSanitization.ql

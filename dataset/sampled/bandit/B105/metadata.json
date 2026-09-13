@@ -1,0 +1,18 @@
+{
+  "plugin_file": "general_hardcoded_password.py",
+  "test_id": "B105",
+  "description": "Test for use of hard-coded password strings**",
+  "severity": "Low",
+  "confidence": "Low",
+  "cwe": "CWE-259",
+  "function_name": "_report",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "hardcoded-passwords.py",
+      "issues_found": 13
+    }
+  ],
+  "total_matched_tests": 1
+}

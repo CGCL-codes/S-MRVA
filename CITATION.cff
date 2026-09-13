@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite the accompanying paper."
+title: "S-MRVA artifact: Divide and Conquer — Exposing SAST Rule Flaws via Realistic Variant Synthesis from Millions of Repositories"
+abstract: >-
+  LLM-agent pipeline that automatically finds false positives and false negatives
+  in static-analysis security rules (Semgrep, CodeQL, Bandit, SpotBugs).
+type: software
+license: MIT
+repository-code: "https://github.com/CGCL-codes/S-MRVA"
+version: "1.0.0"
+date-released: "2026-09-18"
+authors:
+  - name: "S-MRVA Authors"
