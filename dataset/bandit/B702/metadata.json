@@ -1,0 +1,18 @@
+{
+  "plugin_file": "mako_templates.py",
+  "test_id": "B702",
+  "description": "Test for use of mako templates",
+  "severity": "Medium",
+  "confidence": "High",
+  "cwe": "CWE-80",
+  "function_name": "use_of_mako_templates",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "mako_templating.py",
+      "issues_found": 3
+    }
+  ],
+  "total_matched_tests": 1
+}

@@ -1,0 +1,27 @@
+{
+  "rule": {
+    "type": "SQL_NONCONSTANT_STRING_PASSED_TO_EXECUTE",
+    "abbrev": "SQL",
+    "category": "SECURITY",
+    "cweid": "89",
+    "detectors": [
+      {
+        "class": "edu.umd.cs.findbugs.detect.FindSqlInjection",
+        "class_short": "FindSqlInjection",
+        "implementation_file": "spotbugs/src/main/java/edu/umd/cs/findbugs/detect/FindSqlInjection.java"
+      }
+    ],
+    "test_files": [
+      {
+        "test_file": "Bug20070301.java",
+        "copied": true
+      },
+      {
+        "test_file": "BadUseOfSqlExecute.java",
+        "copied": true
+      }
+    ],
+    "test_files_copied": 2
+  },
+  "extraction_date": "2026-03-25T19:23:16.553030"
+}

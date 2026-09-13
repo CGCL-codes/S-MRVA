@@ -1,0 +1,18 @@
+{
+  "plugin_file": "injection_wildcard.py",
+  "test_id": "B609",
+  "description": "Test for use of wildcard injection",
+  "severity": "High",
+  "confidence": "Medium",
+  "cwe": "CWE-78",
+  "function_name": "linux_commands_wildcard_injection",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "wildcard-injection.py",
+      "issues_found": 4
+    }
+  ],
+  "total_matched_tests": 1
+}

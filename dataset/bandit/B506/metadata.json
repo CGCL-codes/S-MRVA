@@ -1,0 +1,23 @@
+{
+  "plugin_file": "yaml_load.py",
+  "test_id": "B506",
+  "description": "Test for use of yaml load",
+  "severity": "Medium",
+  "confidence": "High",
+  "cwe": "CWE-20",
+  "function_name": "yaml_load",
+  "test_file": "yaml_load.py",
+  "has_test": true,
+  "test_file_copied_as": "test_yaml_load.py",
+  "matched_test_files": [
+    {
+      "test_file": "yaml_load.py",
+      "issues_found": 2
+    },
+    {
+      "test_file": "new_candidates-all.py",
+      "issues_found": 1
+    }
+  ],
+  "total_matched_tests": 2
+}

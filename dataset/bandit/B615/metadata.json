@@ -1,0 +1,19 @@
+{
+  "plugin_file": "huggingface_unsafe_download.py",
+  "test_id": "B615",
+  "description": "Test for unsafe Hugging Face Hub downloads",
+  "severity": "Medium",
+  "confidence": "High",
+  "cwe": "CWE-494",
+  "function_name": "huggingface_unsafe_download",
+  "test_file": "huggingface_unsafe_download.py",
+  "has_test": true,
+  "test_file_copied_as": "test_huggingface_unsafe_download.py",
+  "matched_test_files": [
+    {
+      "test_file": "huggingface_unsafe_download.py",
+      "issues_found": 15
+    }
+  ],
+  "total_matched_tests": 1
+}

@@ -1,0 +1,23 @@
+{
+  "rule": {
+    "type": "PERM_SUPER_NOT_CALLED_IN_GETPERMISSIONS",
+    "abbrev": "PERM",
+    "category": "MALICIOUS_CODE",
+    "cweid": "",
+    "detectors": [
+      {
+        "class": "edu.umd.cs.findbugs.detect.PermissionsSuper",
+        "class_short": "PermissionsSuper",
+        "implementation_file": "spotbugs/src/main/java/edu/umd/cs/findbugs/detect/PermissionsSuper.java"
+      }
+    ],
+    "test_files": [
+      {
+        "test_file": "PermissionsSuperTest.java",
+        "copied": true
+      }
+    ],
+    "test_files_copied": 1
+  },
+  "extraction_date": "2026-03-25T19:23:16.551817"
+}

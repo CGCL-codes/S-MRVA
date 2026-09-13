@@ -1,0 +1,1 @@
+../../../../data/codeql/python/ql/src/Security/CWE-312/CleartextLogging.ql

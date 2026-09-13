@@ -1,0 +1,19 @@
+{
+  "plugin_file": "exec.py",
+  "test_id": "B102",
+  "description": "Test for the use of exec",
+  "severity": "Medium",
+  "confidence": "High",
+  "cwe": "CWE-78",
+  "function_name": "exec_issue",
+  "test_file": "exec.py",
+  "has_test": true,
+  "test_file_copied_as": "test_exec.py",
+  "matched_test_files": [
+    {
+      "test_file": "exec.py",
+      "issues_found": 1
+    }
+  ],
+  "total_matched_tests": 1
+}

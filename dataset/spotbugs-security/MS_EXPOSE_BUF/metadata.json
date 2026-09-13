@@ -1,0 +1,23 @@
+{
+  "rule": {
+    "type": "MS_EXPOSE_BUF",
+    "abbrev": "MS",
+    "category": "MALICIOUS_CODE",
+    "cweid": "",
+    "detectors": [
+      {
+        "class": "edu.umd.cs.findbugs.detect.FindReturnRef",
+        "class_short": "FindReturnRef",
+        "implementation_file": "spotbugs/src/main/java/edu/umd/cs/findbugs/detect/FindReturnRef.java"
+      }
+    ],
+    "test_files": [
+      {
+        "test_file": "FindReturnRefTest.java",
+        "copied": true
+      }
+    ],
+    "test_files_copied": 1
+  },
+  "extraction_date": "2026-03-25T19:23:16.549492"
+}

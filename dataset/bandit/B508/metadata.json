@@ -1,0 +1,18 @@
+{
+  "plugin_file": "snmp_security_check.py",
+  "test_id": "B508",
+  "description": "Checking for insecure SNMP versions**",
+  "severity": "Medium",
+  "confidence": "High",
+  "cwe": "CWE-319",
+  "function_name": "snmp_insecure_version_check",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "snmp.py",
+      "issues_found": 1
+    }
+  ],
+  "total_matched_tests": 1
+}

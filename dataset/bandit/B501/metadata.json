@@ -1,0 +1,18 @@
+{
+  "plugin_file": "crypto_request_no_cert_validation.py",
+  "test_id": "B501",
+  "description": "Test for missing certificate validation",
+  "severity": "High",
+  "confidence": "High",
+  "cwe": "CWE-295",
+  "function_name": "request_with_no_cert_validation",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "requests-ssl-verify-disabled.py",
+      "issues_found": 18
+    }
+  ],
+  "total_matched_tests": 1
+}

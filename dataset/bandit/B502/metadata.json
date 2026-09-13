@@ -1,0 +1,18 @@
+{
+  "plugin_file": "insecure_ssl_tls.py",
+  "test_id": "B502",
+  "description": "Test for SSL use with bad version used**",
+  "severity": "High",
+  "confidence": "High",
+  "cwe": "CWE-327",
+  "function_name": "get_bad_proto_versions",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "ssl-insecure-version.py",
+      "issues_found": 18
+    }
+  ],
+  "total_matched_tests": 1
+}

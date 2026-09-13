@@ -1,0 +1,19 @@
+{
+  "plugin_file": "trojansource.py",
+  "test_id": "B613",
+  "description": "TrojanSource - Bidirectional control characters",
+  "severity": "High",
+  "confidence": "Medium",
+  "cwe": "CWE-838",
+  "function_name": "trojansource",
+  "test_file": "trojansource.py",
+  "has_test": true,
+  "test_file_copied_as": "test_trojansource.py",
+  "matched_test_files": [
+    {
+      "test_file": "trojansource.py",
+      "issues_found": 1
+    }
+  ],
+  "total_matched_tests": 1
+}

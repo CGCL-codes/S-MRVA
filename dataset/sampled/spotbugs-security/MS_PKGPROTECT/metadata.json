@@ -1,0 +1,27 @@
+{
+  "rule": {
+    "type": "MS_PKGPROTECT",
+    "abbrev": "MS",
+    "category": "MALICIOUS_CODE",
+    "cweid": "607",
+    "detectors": [
+      {
+        "class": "edu.umd.cs.findbugs.detect.MutableStaticFields",
+        "class_short": "MutableStaticFields",
+        "implementation_file": "spotbugs/src/main/java/edu/umd/cs/findbugs/detect/MutableStaticFields.java"
+      }
+    ],
+    "test_files": [
+      {
+        "test_file": "Bug1933930.java",
+        "copied": true
+      },
+      {
+        "test_file": "Bug3441912.java",
+        "copied": true
+      }
+    ],
+    "test_files_copied": 2
+  },
+  "extraction_date": "2026-03-25T19:23:16.551067"
+}

@@ -1,0 +1,18 @@
+{
+  "plugin_file": "django_xss.py",
+  "test_id": "B703",
+  "description": "Potential XSS on mark_safe function**",
+  "severity": "Medium",
+  "confidence": "High",
+  "cwe": "CWE-80",
+  "function_name": "__init__",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "mark_safe_insecure.py",
+      "issues_found": 29
+    }
+  ],
+  "total_matched_tests": 1
+}

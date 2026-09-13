@@ -1,0 +1,19 @@
+{
+  "plugin_file": "pytorch_load.py",
+  "test_id": "B614",
+  "description": "Test for unsafe PyTorch load",
+  "severity": "Medium",
+  "confidence": "High",
+  "cwe": "CWE-502",
+  "function_name": "pytorch_load",
+  "test_file": "pytorch_load.py",
+  "has_test": true,
+  "test_file_copied_as": "test_pytorch_load.py",
+  "matched_test_files": [
+    {
+      "test_file": "pytorch_load.py",
+      "issues_found": 3
+    }
+  ],
+  "total_matched_tests": 1
+}

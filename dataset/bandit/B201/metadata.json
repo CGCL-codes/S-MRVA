@@ -1,0 +1,18 @@
+{
+  "plugin_file": "app_debug.py",
+  "test_id": "B201",
+  "description": "Test for use of flask app with debug set to true",
+  "severity": "High",
+  "confidence": "High",
+  "cwe": "CWE-94",
+  "function_name": "flask_debug_true",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "flask_debug.py",
+      "issues_found": 1
+    }
+  ],
+  "total_matched_tests": 1
+}

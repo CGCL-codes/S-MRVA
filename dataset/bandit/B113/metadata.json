@@ -1,0 +1,18 @@
+{
+  "plugin_file": "request_without_timeout.py",
+  "test_id": "B113",
+  "description": "Test for missing requests timeout",
+  "severity": "Medium",
+  "confidence": "Low",
+  "cwe": "CWE-400",
+  "function_name": "request_without_timeout",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "requests-missing-timeout.py",
+      "issues_found": 25
+    }
+  ],
+  "total_matched_tests": 1
+}

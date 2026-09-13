@@ -1,0 +1,83 @@
+# S-MRVA: bugs filed against upstream SAST projects.
+# This table is maintained and updated continuously as upstream maintainers respond.
+#
+# Columns (tab-separated):
+#   SAST      Static analyzer the defect concerns (SEMGREP, SEMGREPC =
+#             Semgrep-Java / Semgrep-C rules, CODEQL, BANDIT, SPOTBUGS).
+#   Rule      Rule or engine component the defect was found in ("***" marks a
+#             truncated name, "*" a family of rules).
+#   REPORTED  Number of unique defects reported in that issue/pull request.
+#   LINK      Upstream issue or pull request where we reported it.
+#   STATUS    Progress of that report, per the key below.
+#
+# STATUS key
+#   The key is applied per upstream PROJECT (identified by the repository in
+#   LINK), not per SAST column: the rows for a single analyzer can span both
+#   vendor-maintained and community-maintained repositories.
+#
+#   PENDING    The report was filed and no maintainer has responded yet.
+#
+#   CONFIRMED  An INDEPENDENT party acknowledged or reproduced the defect.
+#              A report or pull request opened solely by the reporters does
+#              NOT by itself count as confirmation.
+#                - Vendor-maintained rule sets: the Semgrep engine and its
+#                  rule set (maintained by Semgrep, Inc.) and CodeQL
+#                  (maintained by GitHub). Confirmation means the vendor's
+#                  maintainers accepted the report, e.g. the issue was
+#                  triaged/accepted or a maintainer stated it is a real bug.
+#                - Community-maintained rule sets: Bandit, SpotBugs, and the
+#                  0xdea Semgrep rule collection. Confirmation means the
+#                  maintainer acknowledged it, or an independent third party
+#                  (not the reporters) reproduced the flaw or opened a fix.
+#
+#   FIXED      A fix for this defect is merged upstream, or explicitly approved
+#              by the maintainer, e.g. a merged/approved pull request targeted
+#              at it, or a patch shipped in a release.
+#
+#   WON'T FIX  The maintainer explicitly declined to fix it (e.g. the issue or
+#              pull request was closed as "wontfix").
+#
+SAST	Rule	REPORTED	LINK	STATUS
+SEMGREP	ecb-cipher	3	https://github.com/semgrep/semgrep/issues/11662	PENDING
+SEMGREP	expat-xxe	1	https://github.com/semgrep/semgrep-rules/issues/3724	PENDING
+SEMGREP	java-jwt-decode-***	1	https://github.com/semgrep/semgrep/issues/11410	CONFIRM
+SEMGREP	engine-bitwise	1	https://github.com/semgrep/semgrep/issues/11407	CONFIRM
+SEMGREP	java-crypto-*	1	https://github.com/semgrep/semgrep/issues/11408	FIXED
+SEMGREP	weak-random	1	https://github.com/semgrep/semgrep-rules/issues/3732	PENDING
+SEMGREP	engine-inherit	1	https://github.com/semgrep/semgrep/issues/11435	CONFIRM
+SEMGREP	server-dangerous-***	1	https://github.com/semgrep/semgrep-rules/issues/3737	PENDING
+SEMGREP	command-injection-***	1	https://github.com/semgrep/semgrep-rules/issues/3763	CONFIRM
+SEMGREP	engine-call-chain	1	https://github.com/semgrep/semgrep/issues/11545	FIXED
+SEMGREP	jjwt-none-alg	2	https://github.com/semgrep/semgrep-rules/issues/3759	PENDING
+SEMGREP	documentbuilderfactory-***	3	https://github.com/semgrep/semgrep-rules/issues/3831	PENDING
+SEMGREP	anonymous-ldap-bind	1	https://github.com/semgrep/semgrep-rules/issues/3758	PENDING
+SEMGREP	hibernate-sqli	2	https://github.com/semgrep/semgrep-rules/issues/3817	PENDING
+SEMGREP	overly-permissive-***	3	https://github.com/semgrep/semgrep-rules/issues/3818	PENDING
+SEMGREP	tainted-url-host	3	https://github.com/semgrep/semgrep-rules/issues/3819	PENDING
+SEMGREPC	engine-goto-label	1	https://github.com/semgrep/semgrep/issues/11620	CONFIRM
+SEMGREPC	raptor-incorrect-unsigned-***	3	https://github.com/0xdea/semgrep-rules/pull/17	CONFIRM
+SEMGREPC	incorrect-order-setuid-***	1	https://github.com/0xdea/semgrep-rules/issues/15	FIXED
+SEMGREPC	incorrect-order-setuid-***	1	https://github.com/0xdea/semgrep-rules/issues/18	PENDING
+SEMGREP	engine-array-type	1	https://github.com/semgrep/semgrep/issues/11483	CONFIRM
+SEMGREP	engine-type-matching	1	https://github.com/semgrep/semgrep/issues/11621	CONFIRM
+SEMGREP	engine-ifdef-parse	1	https://github.com/semgrep/semgrep/issues/11619	CONFIRM
+SPOTBUGS	DMI_CONSTANT_***	4	https://github.com/spotbugs/spotbugs/issues/3990	PENDING
+SPOTBUGS	EI_EXPOSE_REP	2	https://github.com/spotbugs/spotbugs/issues/4003	PENDING
+SPOTBUGS	MS_EXPOSE_BUF	2	https://github.com/spotbugs/spotbugs/issues/4007	PENDING
+BANDIT	B105	3	https://github.com/PyCQA/bandit/issues/1383	FIXED
+BANDIT	B103	1	https://github.com/PyCQA/bandit/issues/1390	PENDING
+BANDIT	B202	1	https://github.com/PyCQA/bandit/issues/1392	PENDING
+BANDIT	B501	2	https://github.com/PyCQA/bandit/issues/1394	PENDING
+BANDIT	B104	1	https://github.com/PyCQA/bandit/issues/1395	CONFIRM
+BANDIT	B506-B507	2	https://github.com/PyCQA/bandit/issues/1397	PENDING
+CODEQL	insecure-protocol	2	https://github.com/github/codeql/issues/21666	PENDING
+CODEQL	hardcoded-credentials	3	https://github.com/github/codeql/issues/21620	CONFIRM
+CODEQL	flask-debug	2	https://github.com/github/codeql/issues/21616	PENDING
+CODEQL	bind-to-all-interface	3	https://github.com/github/codeql/issues/21582	FIXED
+CODEQL	insecure-temporary-file	1	https://github.com/github/codeql/issues/21669	PENDING
+CODEQL	insecure-cookies	2	https://github.com/github/codeql/issues/21647	CONFIRM
+CODEQL	clear-text-logging-sensitve	2	https://github.com/github/codeql/issues/21595	CONFIRM
+CODEQL	tarslip	2	https://github.com/github/codeql/issues/21712	CONFIRM
+CODEQL	path-injection	1	https://github.com/github/codeql/issues/21711	Won't FIX
+CODEQL	ldap-injection	1	https://github.com/github/codeql/issues/21738	PENDING
+CODEQL	code-injection	1	https://github.com/github/codeql/issues/21735	PENDING

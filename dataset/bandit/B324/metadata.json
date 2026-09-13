@@ -1,0 +1,26 @@
+{
+  "plugin_file": "hashlib_insecure_functions.py",
+  "test_id": "B324",
+  "description": "Test use of insecure md4, md5, or sha1 hash functions in hashlib",
+  "severity": "High",
+  "confidence": "High",
+  "cwe": "CWE-327",
+  "function_name": "_hashlib_func",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "imports-aliases.py",
+      "issues_found": 4
+    },
+    {
+      "test_file": "crypto-md5.py",
+      "issues_found": 11
+    },
+    {
+      "test_file": "hashlib_new_insecure_functions.py",
+      "issues_found": 9
+    }
+  ],
+  "total_matched_tests": 3
+}

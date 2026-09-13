@@ -1,0 +1,18 @@
+{
+  "plugin_file": "injection_paramiko.py",
+  "test_id": "B601",
+  "description": "Test for shell injection within Paramiko",
+  "severity": "Medium",
+  "confidence": "Medium",
+  "cwe": "CWE-78",
+  "function_name": "paramiko_calls",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "paramiko_injection.py",
+      "issues_found": 1
+    }
+  ],
+  "total_matched_tests": 1
+}

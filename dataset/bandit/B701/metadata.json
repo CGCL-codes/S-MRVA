@@ -1,0 +1,18 @@
+{
+  "plugin_file": "jinja2_templates.py",
+  "test_id": "B701",
+  "description": "Test for not auto escaping in jinja2",
+  "severity": "High",
+  "confidence": "High",
+  "cwe": "CWE-94",
+  "function_name": "jinja2_autoescape_false",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "jinja2_templating.py",
+      "issues_found": 5
+    }
+  ],
+  "total_matched_tests": 1
+}
