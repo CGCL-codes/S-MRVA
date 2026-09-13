@@ -1,0 +1,18 @@
+{
+  "plugin_file": "tarfile_unsafe_members.py",
+  "test_id": "B202",
+  "description": "Test for tarfile.extractall",
+  "severity": "High",
+  "confidence": "High",
+  "cwe": "CWE-22",
+  "function_name": "exec_issue",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "tarfile_extractall.py",
+      "issues_found": 5
+    }
+  ],
+  "total_matched_tests": 1
+}

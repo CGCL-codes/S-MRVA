@@ -1,0 +1,27 @@
+{
+  "rule": {
+    "type": "EI_EXPOSE_REP",
+    "abbrev": "EI",
+    "category": "MALICIOUS_CODE",
+    "cweid": "374",
+    "detectors": [
+      {
+        "class": "edu.umd.cs.findbugs.detect.FindReturnRef",
+        "class_short": "FindReturnRef",
+        "implementation_file": "spotbugs/src/main/java/edu/umd/cs/findbugs/detect/FindReturnRef.java"
+      }
+    ],
+    "test_files": [
+      {
+        "test_file": "Bug2798271.java",
+        "copied": true
+      },
+      {
+        "test_file": "Bug2012727.java",
+        "copied": true
+      }
+    ],
+    "test_files_copied": 2
+  },
+  "extraction_date": "2026-03-25T19:23:16.546452"
+}

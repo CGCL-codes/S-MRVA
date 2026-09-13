@@ -1,0 +1,23 @@
+{
+  "rule": {
+    "type": "REFLC_REFLECTION_MAY_INCREASE_ACCESSIBILITY_OF_CLASS",
+    "abbrev": "REFLC",
+    "category": "MALICIOUS_CODE",
+    "cweid": "470",
+    "detectors": [
+      {
+        "class": "edu.umd.cs.findbugs.detect.ReflectionIncreaseAccessibility",
+        "class_short": "ReflectionIncreaseAccessibility",
+        "implementation_file": "spotbugs/src/main/java/edu/umd/cs/findbugs/detect/ReflectionIncreaseAccessibility.java"
+      }
+    ],
+    "test_files": [
+      {
+        "test_file": "ReflectionIncreaseAccessibilityTest.java",
+        "copied": true
+      }
+    ],
+    "test_files_copied": 1
+  },
+  "extraction_date": "2026-03-25T19:23:16.552563"
+}

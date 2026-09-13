@@ -1,0 +1,19 @@
+{
+  "plugin_file": "try_except_continue.py",
+  "test_id": "B112",
+  "description": "Test for a continue in the except block",
+  "severity": "Low",
+  "confidence": "High",
+  "cwe": "CWE-703",
+  "function_name": "gen_config",
+  "test_file": "try_except_continue.py",
+  "has_test": true,
+  "test_file_copied_as": "test_try_except_continue.py",
+  "matched_test_files": [
+    {
+      "test_file": "try_except_continue.py",
+      "issues_found": 2
+    }
+  ],
+  "total_matched_tests": 1
+}

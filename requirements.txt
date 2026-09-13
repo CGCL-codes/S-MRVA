@@ -1,0 +1,44 @@
+# Core (pinned to the exact versions baked into the published image)
+langchain==1.3.18
+langchain-core==1.6.1
+langchain-community==0.4.2
+langchain-openai==1.6.0
+langchain-text-splitters==1.1.2
+langgraph==1.2.11
+langgraph-checkpoint==4.2.0
+
+
+# ML / Embeddings
+numpy==2.5.2
+pandas==3.0.5
+scipy==1.18.1
+scikit-learn==1.9.0
+torch==2.13.0
+transformers==5.16.1
+sentence-transformers==6.0.0
+umap-learn==0.5.12
+
+# Visualization
+matplotlib==3.11.1
+seaborn==0.13.2
+
+# Code Analysis
+tree-sitter==0.26.0
+tree-sitter-java==0.23.5
+pyarrow==25.0.1
+
+# Analyzers
+semgrep==1.175.0
+bandit==1.9.4
+
+# Utilities
+openai==3.5.0
+requests==2.34.2
+pyyaml==6.0.3
+networkx==3.6.1
+tqdm==4.70.0
+pydantic==2.13.4
+typing-extensions==4.16.0
+python-dotenv==1.2.3
+# Testing
+pytest==9.1.1

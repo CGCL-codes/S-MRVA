@@ -1,0 +1,42 @@
+{
+  "plugin_file": "injection_shell.py",
+  "test_id": "B602",
+  "description": "Test for use of popen with shell equals true**",
+  "severity": "Low",
+  "confidence": "High",
+  "cwe": "CWE-78",
+  "function_name": "_evaluate_shell_call",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "imports-aliases.py",
+      "issues_found": 1
+    },
+    {
+      "test_file": "wildcard-injection.py",
+      "issues_found": 1
+    },
+    {
+      "test_file": "new_candidates-some.py",
+      "issues_found": 1
+    },
+    {
+      "test_file": "nosec.py",
+      "issues_found": 3
+    },
+    {
+      "test_file": "subprocess_shell.py",
+      "issues_found": 19
+    },
+    {
+      "test_file": "multiline_statement.py",
+      "issues_found": 2
+    },
+    {
+      "test_file": "new_candidates-all.py",
+      "issues_found": 1
+    }
+  ],
+  "total_matched_tests": 7
+}

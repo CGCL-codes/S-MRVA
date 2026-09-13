@@ -1,0 +1,23 @@
+{
+  "rule": {
+    "type": "MS_SHOULD_BE_REFACTORED_TO_BE_FINAL",
+    "abbrev": "MS",
+    "category": "MALICIOUS_CODE",
+    "cweid": "500",
+    "detectors": [
+      {
+        "class": "edu.umd.cs.findbugs.detect.MutableStaticFields",
+        "class_short": "MutableStaticFields",
+        "implementation_file": "spotbugs/src/main/java/edu/umd/cs/findbugs/detect/MutableStaticFields.java"
+      }
+    ],
+    "test_files": [
+      {
+        "test_file": "Bug1487083.java",
+        "copied": true
+      }
+    ],
+    "test_files_copied": 1
+  },
+  "extraction_date": "2026-03-25T19:23:16.551453"
+}

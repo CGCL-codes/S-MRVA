@@ -1,0 +1,18 @@
+{
+  "plugin_file": "general_bind_all_interfaces.py",
+  "test_id": "B104",
+  "description": "Test for binding to all interfaces",
+  "severity": "Medium",
+  "confidence": "Medium",
+  "cwe": "CWE-605",
+  "function_name": "hardcoded_bind_all_interfaces",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "binding.py",
+      "issues_found": 1
+    }
+  ],
+  "total_matched_tests": 1
+}

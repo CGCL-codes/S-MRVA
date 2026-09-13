@@ -1,0 +1,22 @@
+{
+  "plugin_file": "general_hardcoded_tmp.py",
+  "test_id": "B108",
+  "description": "Test for insecure usage of tmp file/directory",
+  "severity": "Medium",
+  "confidence": "Medium",
+  "cwe": "CWE-377",
+  "function_name": "gen_config",
+  "test_file": null,
+  "has_test": false,
+  "matched_test_files": [
+    {
+      "test_file": "hardcoded-tmp.py",
+      "issues_found": 3
+    },
+    {
+      "test_file": "os-chmod.py",
+      "issues_found": 1
+    }
+  ],
+  "total_matched_tests": 2
+}
