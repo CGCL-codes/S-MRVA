@@ -28,7 +28,7 @@ tree-sitter-java==0.23.5
 pyarrow==25.0.1
 
 # Analyzers
-semgrep==1.175.0
+semgrep==1.156.0
 bandit==1.9.4
 
 # Utilities

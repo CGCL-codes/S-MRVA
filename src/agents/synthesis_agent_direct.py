@@ -29,6 +29,11 @@ from langchain_core.language_models import BaseChatModel
 from langchain_core.messages import AnyMessage, HumanMessage, SystemMessage
 from langgraph.graph import StateGraph, START, END
 
+try:
+    from .utils import strip_code_fence
+except ImportError:
+    from utils import strip_code_fence
+
 
 # ---------------------------------------------------------------------------
 # Prompts — "equivalent transformation" paradigm (no external snippet)
@@ -295,7 +300,7 @@ def direct_mutate_step(state: DirectMutationState, llm: BaseChatModel) -> dict:
         else str(response.content)
     )
 
-    code = _extract_tag(response_text, "mutated_code")
+    code = strip_code_fence(_extract_tag(response_text, "mutated_code"))
     mutation_summary = _extract_tag(response_text, "mutation_summary")
     if not code:
         return {

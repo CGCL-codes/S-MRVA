@@ -2,126 +2,181 @@
 """
 Implementation for running Bandit security checks on Python files.
 
-This module provides functionality to:
-1. Run Bandit checks on specific files with specific test IDs
-2. List available Bandit rules
-3. Parse and analyze Bandit JSON output
-4. Get detailed information about security issues found
+Bandit is intentionally run as a category-level analyzer: all rules are
+enabled, and any Bandit finding counts. Rules in the same ``BX0X`` family are
+closely related, so a mutant for one rule may legitimately be captured by a
+sibling rule. Exact rule-id filtering is therefore not used here.
+
+The JSON output is used only to distinguish a real scan from a failed or
+skipped one. A syntax error, missing file, or internal Bandit error must not
+look like a clean scan.
 """
 
 import json
-import os
-import re
 import subprocess
-import sys
 from pathlib import Path
 from typing import Dict, Optional, Any
 
 
 class BanditCheckRunner:
     """Runner for Bandit security checks on Python files."""
-    
+
     def run_bandit_check(
-        self, 
-        file_path: str, 
-        test_id: Optional[str] = None
+        self,
+        file_path: str,
+        test_id: Optional[str] = None,
     ) -> Dict[str, Any]:
         """
-        Run Bandit security check on a file.
-        
+        Run Bandit on a file.
+
         Args:
-            file_path: Path to the Python file to check
-            test_id: Specific test ID to run (e.g., 'B506'). If None, runs all tests.
-        
+            file_path: Path to the Python file to check.
+            test_id: Accepted for API compatibility. Bandit findings are
+                intentionally category-level, so this is not used to filter
+                results.
+
         Returns:
             Dictionary containing:
-                - success: Boolean indicating if check ran successfully
-                - output: Plain text output from Bandit
-                - issues_found: Boolean indicating if issues were detected
-                - error: Error message if failed
+                - success: whether the scan completed successfully
+                - output: human-readable output
+                - issues_found: whether any Bandit finding was produced
+                - file_path, test_id, exit_code
+                - error: failure reason when success is False
         """
         file_path = Path(file_path)
-        
-        # Build Bandit command (without -f json for plain text output)
-        cmd = ['bandit', '-r', str(file_path)]
-        
-        # use all rules. 
-        # if test_id:
-        #     cmd.extend(['-t', test_id])
-        
+
+        cmd = ['bandit', '-r', str(file_path), '-f', 'json']
+
         try:
-            # Run Bandit (note: exit code 1 means issues found, which is not an error)
             result = subprocess.run(
                 cmd,
                 capture_output=True,
                 text=True,
-                cwd=str(file_path.parent if file_path.is_file() else file_path)
+                cwd=str(file_path.parent if file_path.is_file() else file_path),
             )
-            
-            # Combine stdout and stderr for full output
-            full_output = result.stdout
-            if result.stderr:
-                full_output += "\n" + result.stderr
-            
-            # Use regex to detect if issues were found
-            # Bandit outputs "No issues identified." when clean
-            # Or shows issue count like ">> Issue: [B506:yaml_load]"
-            issues_found = False
-            if full_output:
-                # Check for "No issues identified"
-                if "No issues identified" not in full_output:
-                    # Check for issue patterns
-                    issue_pattern = re.compile(r'>>\s+Issue:\s+\[([A-Z]\d+):', re.MULTILINE)
-                    if issue_pattern.search(full_output):
-                        issues_found = True
-            
-            return {
-                'success': True,
-                'output': full_output,
-                'issues_found': issues_found,
-                'file_path': str(file_path),
-                'test_id': test_id,
-                'exit_code': result.returncode
-            }
-            
         except FileNotFoundError:
             return {
                 'success': False,
                 'error': "Bandit is not installed. Run: pip install bandit",
                 'issues_found': False,
-                'output': ''
+                'output': '',
+                'file_path': str(file_path),
+                'test_id': test_id,
+                'exit_code': None,
             }
-        except Exception as e:
+        except Exception as exc:
             return {
                 'success': False,
-                'error': f"Failed to run Bandit: {str(e)}",
+                'error': f"Failed to run Bandit: {exc}",
                 'issues_found': False,
-                'output': ''
+                'output': '',
+                'file_path': str(file_path),
+                'test_id': test_id,
+                'exit_code': None,
             }
-    
+
+        stdout = getattr(result, 'stdout', '') or ''
+        stderr = getattr(result, 'stderr', '') or ''
+        returncode = getattr(result, 'returncode', 0)
+        if not isinstance(returncode, int):
+            returncode = 0
+
+        parsed = None
+        parse_error = None
+        if not stdout.strip():
+            parse_error = "Bandit produced no JSON output"
+        else:
+            try:
+                parsed = json.loads(stdout)
+            except (json.JSONDecodeError, ValueError) as exc:
+                parse_error = f"invalid JSON: {exc}"
+
+        if parsed is not None and not isinstance(parsed, dict):
+            parse_error = "Bandit JSON output was not an object"
+            parsed = None
+
+        raw_results = parsed.get('results', []) if isinstance(parsed, dict) else []
+        if not isinstance(raw_results, list):
+            raw_results = []
+
+        errors = parsed.get('errors', []) if isinstance(parsed, dict) else []
+        if not isinstance(errors, list):
+            errors = [errors]
+
+        # Category-level matching: any Bxxx finding counts. Do not filter by
+        # test_id; sibling rules in the same family are intentionally accepted.
+        results = [item for item in raw_results if isinstance(item, dict)]
+        issues_found = bool(results)
+
+        failure_reasons = []
+        if not issues_found:
+            if parse_error:
+                failure_reasons.append(f"Failed to parse Bandit JSON output: {parse_error}")
+            if errors:
+                failure_reasons.append(
+                    "Bandit reported errors: "
+                    + "; ".join(
+                        str(err.get('reason', err)) if isinstance(err, dict) else str(err)
+                        for err in errors
+                    )
+                )
+            if returncode not in (0, 1):
+                failure_reasons.append(
+                    f"Bandit exited with an unexpected return code: {returncode}"
+                )
+
+        success = issues_found or not failure_reasons
+
+        output_parts = []
+        if stderr.strip():
+            output_parts.append("Bandit stderr:\n" + stderr.strip())
+        if parse_error:
+            output_parts.append(f"JSON parse error: {parse_error}")
+        if errors:
+            output_parts.append(
+                "Bandit errors:\n" + json.dumps(errors, indent=2, default=str)
+            )
+        if results:
+            output_parts.append(f"Findings ({len(results)}):")
+            for item in results:
+                output_parts.append(
+                    f"- [{item.get('test_id', '?')}] "
+                    f"{item.get('filename', '?')}:{item.get('line_number', '?')} "
+                    f"({item.get('issue_severity', '?')}) "
+                    f"{item.get('issue_text', '')}"
+                )
+        elif failure_reasons:
+            output_parts.append(
+                "No findings identified, but the scan was not successful."
+            )
+        else:
+            output_parts.append("No issues identified.")
+
+        if failure_reasons and stdout.strip():
+            output_parts.append("Raw stdout:\n" + stdout.strip())
+
+        response = {
+            'success': success,
+            'output': "\n".join(output_parts),
+            'issues_found': issues_found,
+            'file_path': str(file_path),
+            'test_id': test_id,
+            'exit_code': returncode,
+        }
+        if failure_reasons:
+            response['error'] = "; ".join(failure_reasons)
+        return response
+
     def format_results(self, result: Dict[str, Any], verbose: bool = False) -> str:
-        """
-        Format Bandit check results into a human-readable string.
-        
-        Args:
-            result: Result dictionary from run_bandit_check
-            verbose: If True, include detailed information (currently unused as we return raw output)
-        
-        Returns:
-            Formatted string representation of the results
-        """
+        """Format a Bandit runner result for the verification pipeline."""
         if not result.get('success', False):
-            return f"Error: {result.get('error', 'Unknown error')}"
-        
-        # Return the raw output from Bandit (it's already well-formatted)
+            parts = [f"Error: {result.get('error', 'Unknown error')}"]
+            if result.get('output'):
+                parts.append("")
+                parts.append(str(result.get('output')))
+            return "\n".join(parts)
+
         output = result.get('output', '')
-        
-        # Add a header
         header = f"Bandit Check Results for {result.get('file_path', 'N/A')}\n"
         header += "=" * 60 + "\n"
-        
-        if verbose:
-            return header + output
-        else:
-            # For non-verbose, just return the output
-            return output
+        return header + output if verbose else output

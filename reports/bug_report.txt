@@ -37,18 +37,21 @@
 #   WON'T FIX  The maintainer explicitly declined to fix it (e.g. the issue or
 #              pull request was closed as "wontfix").
 #
+# TOTAL: 89 unique defects across 43 reports. This matches Table 4 of the paper
+# (`tab:reported_bugs`); the REPORTED column is summarized per upstream report.
+#
 SAST	Rule	REPORTED	LINK	STATUS
 SEMGREP	ecb-cipher	3	https://github.com/semgrep/semgrep/issues/11662	PENDING
 SEMGREP	expat-xxe	1	https://github.com/semgrep/semgrep-rules/issues/3724	PENDING
 SEMGREP	java-jwt-decode-***	1	https://github.com/semgrep/semgrep/issues/11410	CONFIRM
 SEMGREP	engine-bitwise	1	https://github.com/semgrep/semgrep/issues/11407	CONFIRM
-SEMGREP	java-crypto-*	1	https://github.com/semgrep/semgrep/issues/11408	FIXED
+SEMGREP	java-crypto-*	18	https://github.com/semgrep/semgrep/issues/11408	FIXED
 SEMGREP	weak-random	1	https://github.com/semgrep/semgrep-rules/issues/3732	PENDING
 SEMGREP	engine-inherit	1	https://github.com/semgrep/semgrep/issues/11435	CONFIRM
 SEMGREP	server-dangerous-***	1	https://github.com/semgrep/semgrep-rules/issues/3737	PENDING
 SEMGREP	command-injection-***	1	https://github.com/semgrep/semgrep-rules/issues/3763	CONFIRM
 SEMGREP	engine-call-chain	1	https://github.com/semgrep/semgrep/issues/11545	FIXED
-SEMGREP	jjwt-none-alg	2	https://github.com/semgrep/semgrep-rules/issues/3759	PENDING
+SEMGREP	jjwt-none-alg	1	https://github.com/semgrep/semgrep-rules/issues/3759	PENDING
 SEMGREP	documentbuilderfactory-***	3	https://github.com/semgrep/semgrep-rules/issues/3831	PENDING
 SEMGREP	anonymous-ldap-bind	1	https://github.com/semgrep/semgrep-rules/issues/3758	PENDING
 SEMGREP	hibernate-sqli	2	https://github.com/semgrep/semgrep-rules/issues/3817	PENDING

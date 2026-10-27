@@ -16,6 +16,11 @@ from langchain_core.language_models import BaseChatModel
 from langchain_core.messages import AnyMessage, HumanMessage, SystemMessage
 from langgraph.graph import StateGraph, START, END
 
+try:
+    from .utils import strip_code_fence
+except ImportError:
+    from utils import strip_code_fence
+
 
 SYSTEM_PROMPT = """[ System Prompt ]
 You are a security test synthesis expert with deep expertise in secure coding,
@@ -246,7 +251,7 @@ def synthesize_step(state: SynthesisState, llm: BaseChatModel) -> dict:
         else str(response.content)
     )
 
-    code = _extract_tag(response_text, "mutated_code")
+    code = strip_code_fence(_extract_tag(response_text, "mutated_code"))
     mutation_summary = _extract_tag(response_text, "mutation_summary")
     if not code:
         return {

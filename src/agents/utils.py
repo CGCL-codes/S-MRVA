@@ -6,6 +6,30 @@ import re
 from typing import Dict, Any
 
 
+_FENCE_RE = re.compile(
+    r"^\s*(?:```|~~~)[^\n]*\n([\s\S]*)\n?\s*(?:```|~~~)\s*$",
+    re.DOTALL,
+)
+
+
+def strip_code_fence(text: str) -> str:
+    """Remove one outer Markdown code fence from an LLM code block.
+
+    Models occasionally wrap the contents of ``<mutated_code>`` in a fenced
+    block even when the prompt asks for raw code. The fence then reaches the
+    analyzer and causes parse errors or partial parsing. This strips only a
+    single outer fence and leaves ordinary code, including internal fences,
+    untouched.
+    """
+    if not isinstance(text, str):
+        return ""
+    stripped = text.strip()
+    match = _FENCE_RE.match(stripped)
+    if match:
+        return match.group(1).strip("\n")
+    return stripped
+
+
 def env_int(name: str, default: int) -> int:
     """Read an integer from the environment, falling back to *default*.
 
